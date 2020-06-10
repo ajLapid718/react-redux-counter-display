@@ -22,11 +22,13 @@ As a user...
 
 */
 
+// Provider says: "Anything that is a child of mine can be granted access to the Redux store";
+
 function App() {
   return (
     <div className="App">
       <div className="App-header">
-        <ValueCounterContainer />
+          <ValueCounterContainer />
       </div>
     </div>
   );
