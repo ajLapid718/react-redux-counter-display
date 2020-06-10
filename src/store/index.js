@@ -4,18 +4,10 @@ import { createLogger } from "redux-logger";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 // Individual reducers altogether under an alias;
-
-// Make a dummy reducer function here;
-
-function counterValue(state = 0, action) {
-  switch (action.type) {
-    default:
-      return state;
-  }
-}
+import * as reducers from "../reducers";
 
 // Construct our Redux store;
-const rootReducer = combineReducers({counterValue});
+const rootReducer = combineReducers(reducers);
 const logger = createLogger({ collapsed: true });
 const middleware = composeWithDevTools(applyMiddleware(logger));
 const store = createStore(rootReducer, middleware); // 2nd arg: middleware;
