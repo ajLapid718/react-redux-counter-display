@@ -52,14 +52,14 @@ class ValueCounterContainer extends Component {
   render() {
     return (
       <div>
-      <ValueCounterView counterValue={this.props.counterValue} handleIncrementByOne={this.handleIncrementByOne} handleDecrementByOne={this.handleDecrementByOne} />
-      <label>Add By Any Amount:</label>
-      <input type="text" name="amountToIncrementBy" value={this.state.amountToIncrementBy} onChange={this.handleAmountChange}></input>
-      <button onClick={this.handleIncrementByAmount}>Increment By Amount</button>
-      <br></br>
-      <label>Decrease By Any Amount:</label>
-      <input type="text" name="amountToDecrementBy" value={this.state.amountToDecrementBy} onChange={this.handleAmountChange}></input>
-      <button onClick={this.handleDecrementByAmount}>Decrement By Amount</button>
+      <ValueCounterView 
+        counterValue={this.props.counterValue} 
+        handleIncrementByOne={this.handleIncrementByOne} 
+        handleDecrementByOne={this.handleDecrementByOne} 
+        handleDecrementByAmount={this.handleDecrementByAmount}
+        handleIncrementByAmount={this.handleIncrementByAmount}
+        handleAmountChange={this.handleAmountChange}
+      />
       </div>
     )
   }
