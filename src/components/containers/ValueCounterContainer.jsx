@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { ValueCounterView } from "../views";
 /*
 
 I want to keep my view layer as my view layer (ReactJS);
@@ -16,7 +16,7 @@ class ValueCounterContainer extends Component {
   }
 
   render() {
-    return <h1>Hello FROM VALUE COUNTER COMPONENT</h1>
+    return <ValueCounterView />
   }
 }
 
