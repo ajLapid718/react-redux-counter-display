@@ -5,6 +5,8 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 // Individual reducers altogether under an alias;
 
+// Make a dummy reducer function here;
+
 // Construct our Redux store;
 const rootReducer = combineReducers(/* pass in reducers here */);
 const logger = createLogger({ collapsed: true });
