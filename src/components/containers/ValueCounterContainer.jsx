@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { ValueCounterView } from "../views";
 import { connect } from "react-redux";
 
+import { incrementByOne, decrementByOne, incrementByAmount, decrementByAmount } from "../../store/utilities/counterValue";
+
 /*
 
 I want to keep my view layer as my view layer (ReactJS);
@@ -21,10 +23,45 @@ I will be about to read from (mapState) the Redux store and write to (mapDispatc
 class ValueCounterContainer extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      amountToIncrementBy: 0,
+      amountToDecrementBy: 0
+    }
+  }
+
+  handleIncrementByOne = () => {
+    this.props.incrementByOne();
+  }
+
+  handleDecrementByOne = () => {
+    this.props.decrementByOne();
+  }
+
+  handleAmountChange = (event) => {
+    this.setState({ [event.target.name]: Number(event.target.value) })
+  }
+
+  handleIncrementByAmount = () => {
+    this.props.incrementByAmount(this.state.amountToIncrementBy);
+  }
+
+  handleDecrementByAmount = () => {
+    this.props.decrementByAmount(this.state.amountToDecrementBy);
   }
 
   render() {
-    return <ValueCounterView counterValue={this.props.counterValue}/>
+    return (
+      <div>
+      <ValueCounterView counterValue={this.props.counterValue} handleIncrementByOne={this.handleIncrementByOne} handleDecrementByOne={this.handleDecrementByOne} />
+      <label>Add By Any Amount:</label>
+      <input type="text" name="amountToIncrementBy" value={this.state.amountToIncrementBy} onChange={this.handleAmountChange}></input>
+      <button onClick={this.handleIncrementByAmount}>Increment By Amount</button>
+      <br></br>
+      <label>Decrease By Any Amount:</label>
+      <input type="text" name="amountToDecrementBy" value={this.state.amountToDecrementBy} onChange={this.handleAmountChange}></input>
+      <button onClick={this.handleDecrementByAmount}>Decrement By Amount</button>
+      </div>
+    )
   }
 }
 
@@ -42,14 +79,18 @@ function mapState(state) {
   }
 }
 
-// function mapDispatch(dispatch) {
-//   return {
-
-//   }
-// }
+function mapDispatch(dispatch) {
+  return {
+    incrementByOne: () => dispatch(incrementByOne()),
+    decrementByOne: () => dispatch(decrementByOne()),
+    incrementByAmount: (amount) => dispatch(incrementByAmount(amount)),
+    decrementByAmount: (amount) => dispatch(decrementByAmount(amount))
+  }
+}
 
 // We successfully establish a connection (subscription) to the Redux store from this particular component;
 // Here, we will take the `this.props` object of the component and merge it with the object returned from mapState();
-// `this.props` + { currentValue: state.counterValueReducer };
+// `this.props` + { currentValue: state.counterValueReducer } + { incrementByOne: () => dispatch(incrementByOne()), decrementByOne: () => dispatch(decrementByOne()), incrementByAmount: (amount) => dispatch(incrementByAmount(amount)), decrementByAmount: (amount) => dispatch(decrementByAmount(amount))};
 // The above "+" sign indicates a merging of one or more objects;
-export default connect(mapState)(ValueCounterContainer);
+// Note: This is basically: `this.props` + mapState() + mapDispatch();
+export default connect(mapState, mapDispatch)(ValueCounterContainer);

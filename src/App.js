@@ -10,11 +10,11 @@ This is what we will be able to do as a user:
 
 As a user...
 
-1) I can see the most up-to-date number value on the screen;
+1) I can see the most up-to-date number value on the screen (DONE);
 
-2) I can click a button to increment the number value by 1;
+2) I can click a button to increment the number value by 1 (DONE);
 
-3) I can click a button to decrement the number value by 1;
+3) I can click a button to decrement the number value by 1 (DONE);
 
 4) I can enter any number (amount) to increase the number value by that amount;
 
