@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { ValueCounterContainer } from "./components/containers";
 
 /*
 
@@ -25,7 +26,7 @@ function App() {
   return (
     <div className="App">
       <div className="App-header">
-        <h1>Hello World!</h1>
+        <ValueCounterContainer />
       </div>
     </div>
   );
